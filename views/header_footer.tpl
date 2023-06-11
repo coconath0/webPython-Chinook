@@ -102,7 +102,9 @@
     color: #854468;
     font-weight: bold;
     }
-
+    p{
+      color: #854468;
+    }
     input{
     padding: 3px;
     font-size: 14px;
