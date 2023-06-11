@@ -1,4 +1,3 @@
-
 %include('header_footer.tpl')
 
 <body>
