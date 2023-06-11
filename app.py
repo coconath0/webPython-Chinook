@@ -1,4 +1,5 @@
 from bottle import Bottle, run
+from database import engine
 
 app = Bottle()
 
