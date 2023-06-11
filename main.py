@@ -1,4 +1,4 @@
-from bottle import Bottle, run, template, request, redirect
+from bottle import Bottle, run, template, route, request, redirect
 from sqlalchemy import text
 from database import engine
 
@@ -23,9 +23,33 @@ def artist_edit():
   stmt = text(("SELECT * FROM artists WHERE ArtistId = {}").format(artist_id))
   artista = conn.execute(stmt).fetchone()
 
-  locals = {'artista': artista}
+  locals = {'artista': artista, 'id': artist_id}
   # respuesta
   return template('artist_edit', locals)
+
+
+@app.route('/artist/save', method='POST')
+def artist_save():
+  name = request.forms.get('name')
+  id = int(request.forms.get('id'))
+  # acceso a db
+  conn = engine.connect()
+  mensaje = ""
+  if id == 0:
+    # crear
+    stmt = text(("INSERT INTO artists (Name) VALUES ('{}')").format(name))
+    mensaje = "Artista creado con éxito"
+  else:
+    stmt = text(
+      ("UPDATE artists SET Name = '{}' WHERE ArtistId = {}").format(name, id))
+    mensaje = "Artista editado con éxito"
+  conn.execute(stmt)
+  conn.commit()
+  conn.close()
+  return redirect("/?mensaje=" + mensaje)
+
+
+
 
 
 @app.route('/albums', method='GET')
