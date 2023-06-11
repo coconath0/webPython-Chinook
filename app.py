@@ -1,4 +1,4 @@
-from bottle import Bottle, run
+from bottle import Bottle, run, template
 from sqlalchemy import text
 from database import engine
 
@@ -13,7 +13,8 @@ def home():
     for r in rows:
         print(r)
     # respuesta
-    return "Hello World!"
+    return template('home')
+    #"Hello World!"
 
 if __name__ == '__main__':
     run(app, host='localhost', port=8080)
