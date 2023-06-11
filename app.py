@@ -4,7 +4,14 @@ from database import engine
 app = Bottle()
 
 @app.route('/', method='GET')
-def hello():
+def home():
+    # acceso a db
+    conn = engine.connect()
+    stmt = text(("SELECT * FROM artists").format())
+    rows = conn.execute(stmt)
+    for r in rows:
+        print(r)
+    # respuesta
     return "Hello World!"
 
 if __name__ == '__main__':
