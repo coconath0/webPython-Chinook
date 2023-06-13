@@ -105,6 +105,18 @@ def albums_edit():
   # respuesta
   return template('album_edit', locals)
 
+@app.route('/albums/new', method='GET')
+def albums_new():
+  # acceso a db
+  conn = engine.connect()
+  stmt = text(("SELECT * FROM artists").format())
+  artistas = conn.execute(stmt)
+  conn.close()
+  album = (0, "", 0) # id, title, fk_artist
+  locals = {'album': album, 'id': 0, 'artistas': artistas}
+  # respuesta
+  return template('album_new', locals)
+
 
 @app.route('/albums/save', method='POST')
 def albums_save():
