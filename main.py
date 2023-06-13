@@ -5,7 +5,6 @@ from database import engine
 app = Bottle()
 
 @app.route('/', method='GET')
-@app.route('/', method='GET')
 def home():
   # mensaje
   mensaje = request.params.mensaje
