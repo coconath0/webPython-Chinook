@@ -6,7 +6,7 @@
     <li><a href="/albums">Albums</a></li>
   </ul>
   <h1>List of Artists</h1>
-  <p>{{mensaje}}</p>
+  <h3>{{mensaje}}</h3>
   <a href="/artist/new"><button class="btn">Agregar Registro</button></a>
   <table class="center">
     <thead>

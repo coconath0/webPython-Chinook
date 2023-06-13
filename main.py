@@ -105,6 +105,20 @@ def albums_edit():
   # respuesta
   return template('album_edit', locals)
 
+@app.route('/albums/delete', method='GET')
+def album_delete():
+  album_id = int(request.params.id)
+  # acceso a db
+  conn = engine.connect()
+  stmt = text(("DELETE FROM albums WHERE AlbumId = {}").format(album_id))
+
+  conn.execute(stmt)
+  conn.commit()
+  conn.close()
+
+  # respuesta
+  return redirect("/albums?mensaje=Se ha eliminado un album")
+
 @app.route('/albums/new', method='GET')
 def albums_new():
   # acceso a db

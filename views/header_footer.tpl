@@ -103,6 +103,9 @@
     font-weight: bold;
     }
     p{
+      color: #ffffff;
+    }
+    h3{
       color: #854468;
     }
     input{
