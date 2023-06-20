@@ -1,4 +1,4 @@
-# webPython_ID
+# Chinook database website example
 Example done in data engineering class
 Using bottle -> Python web framework
 In addition, an SQLite sample database called chinook has also been used, it can be found at the following link:
