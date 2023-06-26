@@ -17,6 +17,6 @@
     </select><br>
     <button class="btn">Guardar Cambios</button>
   </form>
-  <a href="/" class="btn">Cancelar</a>
+  <a href="/albums" class="btn">Cancelar</a>
 </body>
 </html>
